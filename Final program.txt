@@ -1,0 +1,47 @@
+<!-- Find the Sum of All Elements in an Array -->
+$array = [1, 2, 3, 4, 5];
+$sum = 0;
+
+foreach ($array as $value) {
+    $sum += $value;
+}
+
+echo "Sum of all elements: $sum\n";
+
+<!-- Palindrom number  -->
+
+<?php
+$number = 120; // You can test with any number
+$originalNumber = $number; // Save original for comparison
+$reversed = 0;
+
+while ($number > 0) {
+    $digit = $number % 10; // Get the last digit
+    $reversed = ($reversed * 10) + $digit; // Append digit to reversed number
+    $number = (int)($number / 10); // Remove last digit from number
+}
+
+if ($originalNumber === $reversed) {
+    echo "$originalNumber is a palindrome.";
+} else {
+    echo "$originalNumber is not a palindrome.";
+}
+?>
+
+<!-- Palindrom string  -->
+
+<?php
+// Step 1: Define the string
+$string = "madam";
+
+// Step 2: Reverse the string using strrev() function
+$reversed = strrev($string);
+
+// Step 3: Compare original and reversed strings
+if ($string === $reversed) {
+    echo "$string is a palindrome.";
+} else {
+    echo "$string is not a palindrome.";
+}
+?>
+
