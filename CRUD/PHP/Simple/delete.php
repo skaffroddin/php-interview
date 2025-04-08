@@ -1,6 +1,15 @@
-<?php include 'db.php'; ?>
 <?php
-$id = $_GET['id'];
-mysqli_query($conn, "DELETE FROM users WHERE id=$id");
-header("Location: index.php");
+include 'db.php';
+$uid= $_REQUEST['id'];
+$sql= "delete from users where id='$uid'";
+$data= mysqli_query($conn, $sql);
+if($data){
+    echo"<script>
+    alert('User Deleted');
+    window.location.href='index.php'</script>";
+    
+}
+
+
+
 ?>

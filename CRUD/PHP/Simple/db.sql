@@ -1,9 +1,8 @@
-CREATE DATABASE IF NOT EXISTS test_db;
-
-USE test_db;
-
 CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    email VARCHAR(100)
+    id INT AUTO_INCREMENT PRIMARY KEY, --
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL, 
+    phone VARCHAR(15),               
+    city VARCHAR(255)            
+   
 );
