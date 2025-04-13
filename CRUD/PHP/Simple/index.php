@@ -1,52 +1,37 @@
 <?php
 include 'db.php';
-$sql= "select * from users";
-$data= mysqli_query($conn, $sql);
 
-
-
-
+$sql = "SELECT * FROM users";
+$result = mysqli_query($conn, $sql);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CRUD App</title>
 </head>
 <body>
-    <h4>USERS</h4>
-
-    <a href="create.php">Add user</a>
-
-    <table border="2px">
+    <h1>User List</h1>
+    <a href="create.php">Add New User</a>
+    <table border="1">
         <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Phone</th>
-            <th>City</th>
-            <th>Action</th>
+            <th>Actions</th>
         </tr>
- <?php  while($resoult= mysqli_fetch_assoc($data)) {?>
+        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
         <tr>
-
-        <td> <?php echo $resoult['name'];?></td>
-        <td><?php echo $resoult['name'];?></td>
-        <td><?php echo $resoult['name'];?></td>
-        <td><?php echo $resoult['city'];?></td>
-        <td> <a href="edit.php?id=<?php echo $resoult['id'] ?>">Edit</a>
-        <a href="delete.php?id=<?php echo $resoult['id'] ?>">Delete</a>
-
-
-        </td>
-
-
-
+            <td><?php echo $row['id']; ?></td>
+            <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['email']; ?></td>
+            <td>
+                <a href="edit.php?id=<?php echo $row['id']; ?>">Edit</a> |
+                <a href="delete.php?id=<?php echo $row['id']; ?>">Delete</a>
+            </td>
         </tr>
-
-<?php }?>
-
+        <?php } ?>
     </table>
 </body>
 </html>

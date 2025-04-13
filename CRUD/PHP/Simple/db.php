@@ -1,14 +1,15 @@
 <?php
-$server= "localhost";
-$username = "root";
-$password = "";
-$db = "final";
+$host  = 'localhost';
+$username = 'root';
+$password = '';
+$db= 'affy';
+$conn = mysqli_connect($host, $username, $password, $db);
+if($conn){
+    // echo"Oky";
 
-$conn= mysqli_connect($server, $username, $password, $db);
-if(!$conn){
-    die("Error".mysqli_connect_error);
 }
-
-
+else{
+    echo"Not okay";
+}
 
 ?>

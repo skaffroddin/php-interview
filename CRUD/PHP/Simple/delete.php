@@ -1,15 +1,16 @@
 <?php
 include 'db.php';
-$uid= $_REQUEST['id'];
-$sql= "delete from users where id='$uid'";
-$data= mysqli_query($conn, $sql);
-if($data){
-    echo"<script>
-    alert('User Deleted');
-    window.location.href='index.php'</script>";
-    
+
+$id = $_GET['id'] ?? null;
+
+if ($id) {
+    $sql = "DELETE FROM users WHERE id = $id";
+    if (mysqli_query($conn, $sql)) {
+        header("Location: index.php");
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+} else {
+    die("Error: No user ID provided.");
 }
-
-
-
 ?>
