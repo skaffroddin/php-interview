@@ -1,47 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Simple AJAX PHP CRUD</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple AJAX CRUD</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-  <h2>Simple AJAX PHP CRUD</h2>
+    <h1>AJAX CRUD</h1>
+    
+    <!-- Form to Add Record -->
+    <form id="addForm">
+        <input type="text" id="name" placeholder="Enter Name" required>
+        <input type="email" id="email" placeholder="Enter Email" required>
+        <button type="submit">Add</button>
+    </form>
 
-  <input type="text" id="name" placeholder="Name">
-  <input type="text" id="email" placeholder="Email">
-  <button onclick="addUser()">Add</button>
+    <!-- Table to Display Data -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="dataTable"></tbody>
+    </table>
 
-  <br><br>
-  <table border="1" id="userTable">
-    <tr><th>ID</th><th>Name</th><th>Email</th><th>Action</th></tr>
-  </table>
+    <script>
+        // Fetch Records
+        function fetchRecords() {
+            $.get('fetch.php', function(data) {
+                $('#dataTable').html(data);
+            });
+        }
 
-  <script>
-    function loadUsers() {
-      $.post("ajax.php", { type: "read" }, function(data) {
-        $("#userTable").append(data);
-      });
-    }
+        // Add Record
+        $('#addForm').on('submit', function(e) {
+            e.preventDefault();
+            let name = $('#name').val();
+            let email = $('#email').val();
 
-    function addUser() {
-      var name = $("#name").val();
-      var email = $("#email").val();
-      if (name && email) {
-        $.post("ajax.php", { type: "add", name: name, email: email }, function() {
-          location.reload(); // simple way
+            $.post('insert.php', { name: name, email: email }, function(response) {
+                alert(response);
+                fetchRecords();
+                $('#addForm')[0].reset();
+            });
         });
-      } else {
-        alert("Enter both fields.");
-      }
-    }
 
-    function deleteUser(id) {
-      $.post("ajax.php", { type: "delete", id: id }, function() {
-        location.reload();
-      });
-    }
+        // Delete Record
+        function deleteRecord(id) {
+            $.post('delete.php', { id: id }, function(response) {
+                alert(response);
+                fetchRecords();
+            });
+        }
 
-    loadUsers();
-  </script>
+        // Load Data on Page Load
+        fetchRecords();
+    </script>
 </body>
 </html>
+
