@@ -1,13 +1,13 @@
 <?php
-include 'db.php';
+include 'connection.php';
 
 $id = $_POST['id'];
 
-$sql = "DELETE FROM users WHERE id = $id";
-if ($conn->query($sql)) {
-    echo "Record deleted successfully!";
+// Delete user
+$sql = "DELETE FROM users WHERE id = '$id'";
+if (mysqli_query($conn, $sql)) {
+    echo "success";
 } else {
-    echo "Error: " . $conn->error;
+    echo "error";
 }
 ?>
-

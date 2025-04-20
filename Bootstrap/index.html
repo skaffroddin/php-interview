@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Example with Bootstrap 4</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .section {
+      margin: 20px 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+      border-radius: 8px;
+    }
+    .responsive-image {
+      width: 100%; /* Make image responsive */
+      height: auto;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Container for the content -->
+  <div class="container">
+
+    <!-- Heading section -->
+    <div class="section">
+      <h1 class="text-center">Welcome to My Responsive Webpage</h1>
+      <p>This page is designed to be responsive and look good on any device!</p>
+    </div>
+
+    <!-- Image section -->
+    <div class="section">
+      <h3>Responsive Image</h3>
+      <img src="https://via.placeholder.com/800x400" class="responsive-image" alt="Responsive Image">
+      <p>As the screen size changes, the image will adjust accordingly to fit the screen width.</p>
+    </div>
+
+    <!-- Grid section with content -->
+    <div class="section">
+      <h3>Responsive Grid</h3>
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="card">
+            <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Card Image">
+            <div class="card-body">
+              <h5 class="card-title">Card 1</h5>
+              <p class="card-text">This is a card that will adjust its width based on the screen size.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <div class="card">
+            <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Card Image">
+            <div class="card-body">
+              <h5 class="card-title">Card 2</h5>
+              <p class="card-text">Another card that adjusts its width on mobile and desktop.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <div class="card">
+            <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Card Image">
+            <div class="card-body">
+              <h5 class="card-title">Card 3</h5>
+              <p class="card-text">Responsive content in action! The layout changes depending on the screen size.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button section -->
+    <div class="section text-center">
+      <button class="btn btn-primary btn-lg">Click Me</button>
+    </div>
+
+  </div>
+  <div class="container">
+  <div class="row">
+    <div class="col-md-4">Column 1 (takes 4 columns out of 12)</div>
+    <div class="col-md-4">Column 2 (takes 4 columns out of 12)</div>
+    <div class="col-md-4">Column 3 (takes 4 columns out of 12)</div>
+  </div>
+</div>
+
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
