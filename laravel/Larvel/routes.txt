@@ -1,0 +1,66 @@
+
+// Named Route
+Route::get('/dashboard', function () {
+    return "Dashboard";
+})->name('dashboard');
+
+Route::get('/', function () {
+    return view('home');
+})->name('home');
+
+// Match Route
+Route::match(['get', 'post'], '/contact', function () {
+    return "Contact Page";
+});
+
+// Route Parameters (Required)
+Route::get('/user/{id}', function ($id) {
+    return "User ID: " . $id;
+});
+
+// Route Parameters (Optional)
+Route::get('/post/{slug?}', function ($slug = 'default-slug') {
+    return "Post Slug: " . $slug;
+});
+
+// Route Constraints
+Route::get('/product/{id}', function ($id) {
+    return "Product ID: " . $id;
+})->where('id', '[0-9]+');
+
+// Redirecting to Named Routes
+Route::get('/redirect-dashboard', function () {
+    return redirect()->route('dashboard');
+});
+
+// Grouped Routes with Prefix
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return "Admin Dashboard";
+    });
+
+    Route::get('/users', function () {
+        return "Admin Users";
+    });
+});
+
+// Grouped Routes with Middleware
+Route::middleware(['auth'])->prefix('profile')->group(function () {
+    Route::get('/', function () {
+        return "Profile Home";
+    });
+
+    Route::get('/settings', function () {
+        return "Profile Settings";
+    });
+});
+
+// Controller Route
+Route::get('/user/{id}', [App\Http\Controllers\UserController::class, 'show']);
+
+// Single Action Controller
+Route::get('/about', App\Http\Controllers\AboutController::class);
+
+// Resource Controller
+Route::resource('products', App\Http\Controllers\ProductController::class);
+

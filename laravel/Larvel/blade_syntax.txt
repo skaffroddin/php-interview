@@ -1,0 +1,42 @@
+<h1>Hello</h1>
+
+{{5+2}}
+
+<h3>Affroddin</h3>
+
+<!-- Prevent xss  -->
+{!!"<h3>Affroddin</h3>"!!}
+
+<!-- {!!"<script>alert('Affroddin')</script>"!!} -->
+<!-- <script>alert('Affroddin')</script> -->
+
+
+{{-- Comment statement --}}
+
+@php
+$user = 'Affroddin';
+
+@endphp
+{{$user}}
+
+@php 
+
+$names = ["Affroddin", "Babu", "Mamu"];
+
+@endphp
+<br>
+@{{$names}}
+<ul>
+@foreach($names as $name)
+<li>{{$name}}</li>
+@endforeach
+</ul>
+<!-- 
+@if (condition)
+    // Code to execute if the condition is true
+@elseif (other_condition)
+    // Code to execute if the other condition is true
+@else
+    // Code to execute if none of the above conditions are true
+@endif -->
+
